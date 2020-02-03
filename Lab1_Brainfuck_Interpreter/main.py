@@ -41,6 +41,19 @@ def main():
         while c != '[':
           code_ptr -= 1
           c = code[code_ptr]
+    elif c == '~':
+      addr = mem[mem_ptr]*256 + mem[mem_ptr+1]
+      code_ptr = addr-1
+    elif c == '|':
+      sign = False
+      if mem[mem_ptr] != 0:
+        sign = True
+
+      jump = mem[mem_ptr+1] - 1
+      if sign:
+        code_ptr -= jump
+      else:
+        code_ptr += jump
 
     if debug:    
       print("code: ", c)
