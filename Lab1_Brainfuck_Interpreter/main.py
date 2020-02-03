@@ -20,13 +20,13 @@ def main():
     c = code[code_ptr]
     
     if c == '>':
-      mem_ptr = mem_ptr+1
+      mem_ptr += 1
     elif c == '<':
-      mem_ptr = mem_ptr-1
+      mem_ptr -= 1
     elif c == '+':
-      mem[mem_ptr] = mem[mem_ptr]+1
+      mem[mem_ptr] += 1
     elif c == '-':
-      mem[mem_ptr] = mem[mem_ptr]-1
+      mem[mem_ptr] -= 1
     elif c == '.':
       print(chr(mem[mem_ptr]), end="")
     elif c == ',':
@@ -34,12 +34,12 @@ def main():
     elif c == '[':
       if mem[mem_ptr] == 0:
         while c != ']':
-          code_ptr = code_ptr+1
+          code_ptr += 1
           c = code[code_ptr]
     elif c == ']':
       if mem[mem_ptr] != 0:
         while c != '[':
-          code_ptr = code_ptr-1
+          code_ptr -= 1
           c = code[code_ptr]
 
     if debug:    
@@ -49,7 +49,7 @@ def main():
       print("mem: ", mem[mem_ptr])
       print()
 
-    code_ptr = code_ptr+1
+    code_ptr += 1
 
 if __name__ == "__main__":
   main()
